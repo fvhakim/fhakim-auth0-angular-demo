@@ -1,0 +1,203 @@
+<html>
+  <head>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <p class="highcharts-description">
+        Pie chart where the individual slices can be clicked to expose more
+        detailed data.
+    </p>
+</figure>
+
+
+<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+<pre id="tsv" style="display:none">
+
+<script>
+
+    // Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: 'Number of Employees per each group'
+    },
+    subtitle: {
+        text: 'Click on any groups for more details'
+    },
+
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        },
+        point: {
+            valueSuffix: '%'
+        }
+    },
+
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}: {point.y}'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}'
+    },
+
+    series: [
+        {
+            name: "Groups",
+            colorByPoint: true,
+            data: [
+                {
+                    name: "Administrator",
+                    y: 2,
+                    drilldown: "Administrator"
+                },
+                {
+                    name: "Sales",
+                    y: 2,
+                    drilldown: "Sales"
+                },
+                {
+                    name: "Marketing",
+                    y: 1,
+                    drilldown: "Marketing"
+                },
+                {
+                    name: "Everyone",
+                    y: 5,
+                    drilldown: "Everyone"
+                }
+            ]
+        }
+    ],
+    drilldown: {
+        series: [
+            {
+                name: "Administrator",
+                id: "Administrator",
+                data: [
+                    [
+                        "Florida",
+                        1
+                    ],
+                    [
+                        "Texas",
+                        1
+                    ]
+                    
+                ]
+            },
+            {
+                name: "Sales",
+                id: "Sales",
+                data: [
+                    
+                    [
+                        "California",
+                        1
+                    ],
+                    [
+                        "New York",
+                        1
+                    ]
+                    
+                ]
+            },
+            {
+                name: "Marketing",
+                id: "Marketing",
+                data: [
+                [
+                        "New York",
+                        1
+                    ]
+                ]
+            },
+            {
+                name: "Everyone",
+                id: "Everyone",
+                data: [
+                [
+                        "Florida",
+                        1
+                    ],
+                    [
+                        "California",
+                        1
+                    ],
+                    [
+                        "Texas",
+                        1
+                    ],
+                    [
+                        "New York",
+                        2
+                    ]
+                    
+                ]
+            },
+            
+            
+        ]
+    }
+});
+
+</script>
+
+<style>
+
+
+
+.highcharts-data-table table {
+	font-family: Verdana, sans-serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	
+}
+.highcharts-data-table caption {
+    
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+.highcharts-button-symbol
+{
+    display: none;
+}
+
+
+</style>
+
+</body>
+</html>

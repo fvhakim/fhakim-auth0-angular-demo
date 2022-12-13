@@ -1,0 +1,32 @@
+
+<form  #f="ngForm" (ngSubmit)="signup(f.value)">
+  
+    <div class="row">
+      <div class="col-md-6" > 
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName" id="firstName" type="text" class="form-control" required> 
+      </div>  
+      </div> 
+      <div class="col-md-6" > 
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName" id="lastName" type="text" class="form-control" required>
+      </div> 
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input #email="ngModel" [(ngModel)]="user.email" name="email" id="email" type="text" class="form-control" required>
+    </div> 
+  
+    <div class="form-group">
+      <label for="mobilePhone">Password</label>
+      <input #mobilePhone="ngModel" [(ngModel)]="user.password" name="password" id="password" type="text" class="form-control" type="password" required>
+    </div> 
+
+  
+  
+  <button class="btn btn-secondary" style="margin-top: 20px;">Submit</button>
+  </form>

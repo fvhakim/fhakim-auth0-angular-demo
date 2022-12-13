@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top box-shadow--2dp">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="./../assets/logo.png" style="max-width: 190px; padding-left: 40px; padding-top: 7px;">
+      <img src="./../assets/adt.png" *ngIf="orgId === 'org_cPKo0SGbO0nrE0cn'" style="max-width: 75px; padding-left: 10px; padding-top: 7px;"> 
+      <img src="./../assets/abc.png" *ngIf="orgId === 'org_EBHY1QFeX7AFSqEa'" style="max-width: 75px; padding-left: 10px; padding-top: 7px;">
+    </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding-left: 30px;">
+       
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/" *ngIf="auth.isAuthenticated$ | async">Home </a>
+          </li>
+
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/account" *ngIf="auth.isAuthenticated$ | async">My Account </a>
+          </li>
+
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/finances" *ngIf="auth.isAuthenticated$ | async">Finances</a>
+          </li>
+
+          <!--<li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/" >Locations <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/" >Find a Doctor <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active" style="padding-left: 30px;">
+            <a class="nav-link" routerLink="/" >Schedule <span class="sr-only">(current)</span></a>
+          </li>-->
+          
+  
+          
+        </ul>
+        
+        <form class="d-flex" style="padding-right: 40px;">
+         <!-- <p *ngIf="isAuthenticated"  style="color:#fff; padding-top: 15px; padding-right: 20px;">Welcome, {{firstName}} {{lastName}}</p>-->
+       
+         <!-- <button style = "color: #fff; background-color: #01A982;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="!isAuthenticated" routerLink="/login"> Login </button> -->
+          <!--<button style = "color: #fff; background-color: #15467b;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="!isAuthenticated" (click)="loginDefault()"> Okta Login Page</button> -->
+         
+          <a style = " margin-left: 10px; color: #fff; background-color: #01A982;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="(auth.isAuthenticated$ | async) === false" (click)="signup()"> Sign up </a> 
+
+           <a style = " margin-left: 10px; color: #fff; background-color: #01A982;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="(auth.isAuthenticated$ | async) === false" (click)="loginPasswordless()"> Passwordless </a> 
+
+          <a style = " margin-left: 10px; color: #fff; background-color: #01A982;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="(auth.isAuthenticated$ | async) === false" (click)="loginWithRedirect()"> Login </a>
+
+          <a style = " margin-left: 10px; color: #fff; background-color: #01A982;" class="btn btn-outline-success my-2 my-sm-0" *ngIf="auth.isAuthenticated$ | async" (click)="logout()"> Logout </a>
+
+   
+        </form>
+      </div>
+    </div>
+    </nav>
+  
+    <div class="container-fluid" style="background-color: white;" >
+  
+      <router-outlet></router-outlet>
+   
+    </div>
+  
+  
+    <!--
+  
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <button (click)="auth.logout()">
+        Log out
+      </button>
+    </ng-container>
+  
+    <ng-template #loggedOut>
+      <button (click)="auth.loginWithRedirect()">Log in</button>
+    </ng-template>
+  
+    <div class="container" style="background-color: black;" >
+  
+      <router-outlet></router-outlet>
+   
+    </div>
+    <ul *ngIf="auth.user$ | async as user">
+      <li>{{ user.name }}</li>
+      <li>{{ user.email }}</li>
+    </ul>
+  
+    -->
+    

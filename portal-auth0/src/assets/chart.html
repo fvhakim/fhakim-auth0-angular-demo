@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+      
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['State', 'Number of Employees'],
+          ['Florida', 1],
+          ['California', 1],
+          ['Texas', 1],
+          ['New York', 2]
+        ]);
+
+        var options = {region: "US", resolution: "provinces"};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    
+    
+    <p style="color:#333333;font-size:18px;fill:#333333; font-family: 'Lucida Grande'; padding-top: 10px; padding-left: 20px;">Employees in the United States</p>
+    <div id="regions_div" style="width: 100%; height: 350px;"></div>
+  </body>
+</html>
